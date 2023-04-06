@@ -1,0 +1,12 @@
+version: "3.7"
+services:
+  postgres:
+    build:
+      context: docker-compose
+      dockerfile: PostgresDockerfile
+    ports:
+      - "127.0.0.1:2345:5432"
+    environment:
+      POSTGRES_PASSWORD: passwd
+      # Comma separated values
+      POSTGRES_DATABASES: auth
