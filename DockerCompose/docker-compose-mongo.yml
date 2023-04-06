@@ -1,0 +1,29 @@
+version: '3.7'
+services:
+  mongodb_container:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: Mongo1234
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:
+
+# $ docker-compose -f docker-compose-mongo.yml up -d
+# $ docker volume ls
+# $ mongo admin -u root -p Mongo1234
+# $ show dbs
+# $ use mydatabase
+# $ db.your_collection_name.find()
+# $ db.your_collection_name.save({"name":"Pankaj"})
+
+# To Stop
+
+# To shutdown database without delete all containers.
+# $ docker-compose -f docker-compose-mongo.yml stop -d
+# To shutdown database and delete all containers
+# $ docker-compose -f docker-compose-mongo.yml down -d
