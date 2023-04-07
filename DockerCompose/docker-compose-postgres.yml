@@ -1,12 +1,17 @@
-version: "3.7"
+version: '3.8'
 services:
   postgres:
-    build:
-      context: docker-compose
-      dockerfile: PostgresDockerfile
-    ports:
-      - "127.0.0.1:2345:5432"
+    container_name: postgres
+    image: postgres:latest
     environment:
-      POSTGRES_PASSWORD: passwd
-      # Comma separated values
-      POSTGRES_DATABASES: auth
+      POSTGRES_USER: rootuser123
+      POSTGRES_PASSWORD: SomeSecretPassword
+      PGDATA: /data/postgres
+    volumes:
+      - postgres-db:/data/postgres
+    ports:
+      - "5432:5432"
+
+volumes:
+  postgres-db:
+    driver: local
